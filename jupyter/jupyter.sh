@@ -12,7 +12,7 @@ set -exo pipefail
 
 readonly ROLE="$(/usr/share/google/get_metadata_value attributes/dataproc-role)"
 readonly INIT_ACTIONS_REPO="$(/usr/share/google/get_metadata_value attributes/INIT_ACTIONS_REPO \
-  || echo 'https://github.com/GoogleCloudPlatform/dataproc-initialization-actions.git')"
+  || echo 'https://github.com/amacfie/dataproc-initialization-actions.git')"
 readonly INIT_ACTIONS_BRANCH="$(/usr/share/google/get_metadata_value attributes/INIT_ACTIONS_BRANCH \
   || echo 'master')"
 
@@ -72,13 +72,7 @@ if [[ "${ROLE}" == 'Master' ]]; then
 fi
 echo "Completed installing Jupyter!"
 
-# Install Jupyter extensions (if desired)
-# TODO: document this in readme
-if [[ ! -v "${INSTALL_JUPYTER_EXT}" ]]; then
-  INSTALL_JUPYTER_EXT=false
-fi
-if [[ "${INSTALL_JUPYTER_EXT}" = true ]]; then
-  echo "Installing Jupyter Notebook extensions..."
-  ./dataproc-initialization-actions/jupyter/internal/bootstrap-jupyter-ext.sh
-  echo "Jupyter Notebook extensions installed!"
-fi
+# Install Jupyter extensions
+echo "Installing Jupyter Notebook extensions..."
+./dataproc-initialization-actions/jupyter/internal/bootstrap-jupyter-ext.sh
+echo "Jupyter Notebook extensions installed!"
