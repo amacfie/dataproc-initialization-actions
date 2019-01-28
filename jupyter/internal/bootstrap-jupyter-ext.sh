@@ -40,9 +40,8 @@ fi
 # 1. Install IPyNB extensions:
 if [[ ! -d "${NBEXT_PATH}" ]]; then
   echo "Installing ${NBEXT_PATH}"
-  git clone https://github.com/ipython-contrib/IPython-notebook-extensions.git
-  conda build IPython-notebook-extensions
-  conda install --use-local nbextensions
+  conda install -c conda-forge jupyter_contrib_nbextensions
+  conda install -c conda-forge jupyter_nbextensions_configurator
 else
   echo "Existing directory at path: ${NBEXT_PATH}, skipping install!"
 fi
