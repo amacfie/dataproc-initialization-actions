@@ -71,6 +71,19 @@ echo "Installing Jupyter Notebook extensions..."
 ./dataproc-initialization-actions/jupyter/internal/bootstrap-jupyter-ext.sh
 echo "Jupyter Notebook extensions installed!"
 
+readonly VIM_EXTENSION="$(/usr/share/google/get_metadata_value attributes/VIM_EXTENSION)"
+# test if this value is nonempty
+if [ -n "${VIM_EXTENSION}" ]; then
+  if [[ ! -d "$(jupyter --data-dir)/nbextensions/vim_binding" ]]; then
+    mkdir -p $(jupyter --data-dir)/nbextensions
+    cd $(jupyter --data-dir)/nbextensions
+    git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+    jupyter nbextension enable vim_binding/vim_binding
+    cd -
+  fi
+fi
+
+# Launch
 if [[ "${ROLE}" == 'Master' ]]; then
   ./dataproc-initialization-actions/jupyter/internal/setup-jupyter-kernel.sh
   ./dataproc-initialization-actions/jupyter/internal/launch-jupyter-kernel.sh
