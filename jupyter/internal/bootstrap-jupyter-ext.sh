@@ -38,13 +38,9 @@ if [[ ! -d "~/.local/share/jupyter/" ]]; then
 fi
 
 # 1. Install IPyNB extensions:
-if [[ ! -d "${NBEXT_PATH}" ]]; then
-  echo "Installing ${NBEXT_PATH}"
-  conda install -c conda-forge jupyter_contrib_nbextensions
-  conda install -c conda-forge jupyter_nbextensions_configurator
-else
-  echo "Existing directory at path: ${NBEXT_PATH}, skipping install!"
-fi
+echo "Installing ${NBEXT_PATH}"
+conda install -c conda-forge jupyter_contrib_nbextensions
+conda install -c conda-forge jupyter_nbextensions_configurator
 
 # 2. Install RISE (http://github.com/damianavila/RISE)
 if [[ ! -d "${RISE_PATH}" ]]; then

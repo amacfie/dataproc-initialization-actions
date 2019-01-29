@@ -66,13 +66,13 @@ fi
 # For storing notebooks on GCS. Pin version to make this script hermetic.
 pip install jgscm==0.1.7
 
+# Install Jupyter extensions
+echo "Installing Jupyter Notebook extensions..."
+./dataproc-initialization-actions/jupyter/internal/bootstrap-jupyter-ext.sh
+echo "Jupyter Notebook extensions installed!"
+
 if [[ "${ROLE}" == 'Master' ]]; then
   ./dataproc-initialization-actions/jupyter/internal/setup-jupyter-kernel.sh
   ./dataproc-initialization-actions/jupyter/internal/launch-jupyter-kernel.sh
 fi
 echo "Completed installing Jupyter!"
-
-# Install Jupyter extensions
-echo "Installing Jupyter Notebook extensions..."
-./dataproc-initialization-actions/jupyter/internal/bootstrap-jupyter-ext.sh
-echo "Jupyter Notebook extensions installed!"
