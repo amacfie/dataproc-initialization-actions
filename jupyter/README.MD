@@ -80,3 +80,19 @@ Notebooks are stored and retrieved from the cluster staging bucket (Google Cloud
 * This initialization action clones this repo at `master` to run other scripts in the repo. If you plan to copy `jupyter.sh` to your own GCS bucket, you will also need to fork this repository and specify the metadata keys `INIT_ACTIONS_REPO` and `INIT_ACTIONS_BRANCH`.
 * This initialization action runs the conda init action, which supports the metadata keys `CONDA_PACKAGES` and `PIP_PACKAGES`. You can also use these to install additional packages.
 
+
+# Downstream extras
+
+[nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions)
+always included
+
+[extension configurator](https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator/)
+included
+
+These further options can be provided as metadata keys using `--metadata`.
+
+* `VIM_EXTENSION`: set to nonempty string to include vim keybindings
+* `R_KERNEL`: set to nonempty string to include R kernel for Jupyter
+* `R_PACKAGES`: colon separated list of R packages to install from CRAN.
+  only used if `R_KERNEL` is set
+

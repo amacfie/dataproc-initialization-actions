@@ -41,4 +41,10 @@ jupyter kernelspec install "${JUPYTER_KERNEL_DIR}"
 echo "c.MappingKernelManager.default_kernel_name = 'pyspark'" >> ~/.jupyter/jupyter_notebook_config.py
 ${TOREE_INSTALLER}
 
+# test if this value is nonempty
+readonly R_KERNEL="$(/usr/share/google/get_metadata_value attributes/R_KERNEL)"
+if [ -n "${R_KERNEL}" ]; then
+  /dataproc-initialization-actions/jupyter/kernels/install-r.sh
+fi
+
 echo "Jupyter setup!"
