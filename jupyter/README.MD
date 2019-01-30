@@ -83,8 +83,6 @@ Notebooks are stored and retrieved from the cluster staging bucket (Google Cloud
 
 # [Downstream](https://github.com/amacfie/dataproc-initialization-actions/tree/master/jupyter) extras
 
-another important note: Dataproc runs this from `/`
-
 [nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions)
 always included
 
@@ -96,5 +94,9 @@ These further options can be provided as metadata keys using `--metadata`.
 * `VIM_EXTENSION`: set to nonempty string to include vim keybindings
 * `R_KERNEL`: set to nonempty string to include R kernel for Jupyter
 * `R_PACKAGES`: colon separated list of R packages to install from CRAN.
-  only used if `R_KERNEL` is set
+
+More important notes:
+
+* Dataproc runs this from `/`
+* Python and R packages are installed on all nodes
 

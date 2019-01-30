@@ -57,11 +57,22 @@ if [ -n "${JUPYTER_CONDA_CHANNELS}" ]; then
   done
 fi
 
+# install python packages
 if [ -n "${JUPYTER_CONDA_PACKAGES}" ]; then
   echo "Installing custom conda packages '${JUPYTER_CONDA_PACKAGES/:/ }'"
   # Do not use quotes so that space separated packages turn into multiple arguments
   conda install ${JUPYTER_CONDA_PACKAGES//:/ }
 fi
+
+# install R packages
+readonly R_PACKAGES="$(/usr/share/google/get_metadata_value attributes/R_PACKAGES)"
+if [ -n "${R_PACKAGES}" ]; then
+  echo "Installing custom R packages '${R_PACKAGES/:/ }'"
+  for package in ${R_PACKAGES//:/ }; do
+    R -e "install.packages('${package}', repos='http://cran.us.r-project.org')"
+  done
+fi
+
 
 # For storing notebooks on GCS. Pin version to make this script hermetic.
 pip install jgscm==0.1.7
