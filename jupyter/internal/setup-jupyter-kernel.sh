@@ -15,6 +15,7 @@ JUPYTER_PORT=$(/usr/share/google/get_metadata_value attributes/JUPYTER_PORT || t
 [[ ! $JUPYTER_PORT =~ ^[0-9]+$ ]] && JUPYTER_PORT=8123
 readonly JUPYTER_PORT
 readonly JUPYTER_AUTH_TOKEN="$(/usr/share/google/get_metadata_value attributes/JUPYTER_AUTH_TOKEN || true)"
+# why absolute paths?
 readonly JUPYTER_KERNEL_DIR='/dataproc-initialization-actions/jupyter/kernels/pyspark'
 readonly KERNEL_GENERATOR='/dataproc-initialization-actions/jupyter/kernels/generate-pyspark.sh'
 readonly TOREE_INSTALLER='/dataproc-initialization-actions/jupyter/kernels/install-toree.sh'

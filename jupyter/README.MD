@@ -83,6 +83,8 @@ Notebooks are stored and retrieved from the cluster staging bucket (Google Cloud
 
 # [Downstream](https://github.com/amacfie/dataproc-initialization-actions/tree/master/jupyter) extras
 
+another important note: Dataproc runs this from `/`
+
 [nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions)
 always included
 
