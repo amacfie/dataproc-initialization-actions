@@ -3,12 +3,12 @@
 set -e
 
 # install kernel
-apt install libzmq3-dev
+apt install -y libzmq3-dev
 R -e "install.packages('rzmq', repos='http://cran.us.r-project.org')"
 R -e "install.packages('repr', repos='http://cran.us.r-project.org')"
 R -e "install.packages(c('IRkernel','IRdisplay'),\
-      repos = c('http://irkernel.github.io/', getOption('repos')))"
-R -e "IRkernel::installspec(user = FALSE)"
+      repos = c('http://irkernel.github.io/', getOption('repos')));\
+      IRkernel::installspec(user = FALSE)"
 
 # install packages
 readonly R_PACKAGES="$(/usr/share/google/get_metadata_value attributes/R_PACKAGES)"

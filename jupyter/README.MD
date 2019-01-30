@@ -81,7 +81,7 @@ Notebooks are stored and retrieved from the cluster staging bucket (Google Cloud
 * This initialization action runs the conda init action, which supports the metadata keys `CONDA_PACKAGES` and `PIP_PACKAGES`. You can also use these to install additional packages.
 
 
-# Downstream extras
+# [Downstream](https://github.com/amacfie/dataproc-initialization-actions/tree/master/jupyter) extras
 
 [nbextensions](https://github.com/ipython-contrib/jupyter_contrib_nbextensions)
 always included
